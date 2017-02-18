@@ -1,0 +1,42 @@
+{{#extend "stylesheets"}}
+
+{{/extend}}
+
+{{#extend "scripts"}}
+    <script src="socket.io-client/dist/socket.io.min.js"></script>
+    <script src="handlebars/dist/handlebars.min.js"></script>
+    <script src="js/chat.js"></script>
+{{/extend}}
+
+<div class="messages-wrap" id="messages-wrap">
+
+    {{#each messages}}
+        {{>message}}
+    {{/each}}
+
+</div>
+
+<div class="send-panel">
+    <form id="send-panel-form" class="send-panel-form">
+
+        <label class="send-panel-wrap-kp">
+        КП
+            <input  type="number" class="send-panel-kp"  name="kp" {{#unless user}}
+                   disabled {{/unless}}>
+        </label>
+        <p class="send-panel-wrap-sos">
+            <input class="send-panel-sos" name="sos"  type="button" value="Опр-ть коор-ты" {{#unless user}}  disabled {{/unless}}>
+            <input   class="send-panel-n"  name="n" placeholder="N" {{#unless user}} disabled {{/unless}}>
+            <input   class="send-panel-e"  name="e"   placeholder="E" {{#unless user}} disabled {{/unless}}>
+        </p>
+
+        <div class="send-panel-wrap-text" >
+            <input type="text" autofocus  class="send-panel-text" name="message" {{#unless user}} disabled {{/unless}}>
+            <input type="submit" class="send-panel-submit" value="Отправить" {{#unless user}}  disabled {{/unless}}>
+        </div>
+    </form>
+    <div><span id="status"></span> <span id="statusFrom"></span></div>
+</div>
+
+
+

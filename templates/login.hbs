@@ -1,0 +1,49 @@
+{{#extend "stylesheets"}}
+
+{{/extend}}
+
+{{#extend "scripts"}}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="js/login.js"></script>
+{{/extend}}
+
+<h2>Введите имя и пароль</h2>
+<hr>
+<form action="#" class="form login " id="login">
+    <label for="team">Имя <br>
+    <input type="text" name="team" autofocus></label>
+
+    <label for="password">Пароль <br>
+    <input type="password" name="password"></label>
+
+    <p class="error"></p>
+    <button type="submit" class="submit">Войти</button>
+</form>
+
+<h2>Зарегистрироваться</h2>
+<hr>
+<form action="#" class="form registration" id="registration">
+
+    <label for="team">Название команды <br>
+    <input type="text" name="team" ></label>
+
+    <label for="password">Пароль <br>
+    <input type="password" name="password"></label>
+
+    <p><select size="1"  name="category">
+        <option >Выберите класс</option>
+        <option  value="s">S</option>
+        <option  value="l">L</option>
+        <option value="velo">velo</option>
+    </select></p>
+
+    <label for="text">Коментарий <br>
+    <textarea name="text"></textarea></label>
+
+    <div class="g-recaptcha" data-sitekey="6Lch1hUUAAAAAHTaGoQjH-Bl07Wr43sBVdmaIMuh"></div>
+
+    <p class="error"></p>
+
+    <button type="submit" class="submit">Зарегистрироваться</button>
+
+</form>

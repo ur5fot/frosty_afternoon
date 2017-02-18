@@ -1,0 +1,36 @@
+{{#extend "stylesheets"}}
+
+{{/extend}}
+
+{{#extend "scripts"}}
+    <script src="js/admin.js"></script>
+{{/extend}}
+
+<h2>Добавте КП</h2>
+<hr>
+<form action="#" class="form kp" id="formKp">
+    <label for="kp">Номер КП
+    <input type="number" name="kp" autofocus></label>
+
+    <label for="n">N
+    <input type="text"  name="n"></label>
+
+    <label for="e">E
+    <input type="text" name="e"></label>
+
+    <label for="text">Описание
+    <input type="text" name="text"></label>
+
+    <p class="error"></p>
+    <button type="submit" class="submit">Добавить КП</button>
+</form>
+
+<h2>Удалить КП</h2>
+<hr>
+<form action="#" class="form kp del" id="formKpDel">
+    <label for="kp">Номер КП</label>
+    <input type="number" name="kp" >
+
+    <p class="error"></p>
+    <button type="submit" class="submit">удалить КП</button>
+</form>
