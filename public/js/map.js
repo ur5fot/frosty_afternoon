@@ -3,7 +3,7 @@ var map;
 var position = {};
 
 var initMap = function () {
-    co(function *() {
+    // co(function *() {
         var myLatLng = {lat: 46.482526, lng: 30.723309};
         map = new google.maps.Map(document.getElementById('map'), {
             center: myLatLng,
@@ -23,14 +23,56 @@ var initMap = function () {
             });
         });
 
-        var markers = yield new Promise((resolve, reject)=> {
+        // var markers = yield new Promise((resolve, reject)=> {
             $.ajax({
                 url: '/map',
                 method: 'POST',
                 data: {},
-                success: function (data) {
+                success: function (markers) {
 
-                    resolve(data)
+                    // resolve(markers)
+
+                    markers.kpsObj = {};
+
+                    markers.kps.forEach(function (kp) {
+                        // console.log(kp);
+                        kp.ggl = new google.maps.Marker({
+                            position: {lat: kp.n, lng: kp.e},
+                            map: map,
+                            label: kp.kp + '',
+                            title: kp.kp + ' ' + kp.text
+                        });
+                        markers.kpsObj[kp.kp] = kp;
+                        // console.log( markers);
+
+                    });
+
+                    markers.messagesKp.forEach(function (message) {
+                        // console.log({lat: markers.kps[marker.kp].n, lng: markers.kps[marker.kp].e});
+                        message.ggl = new google.maps.Marker({
+                            position: {lat: markers.kpsObj[message.kp].n, lng: markers.kpsObj[message.kp].e},
+                            map: map,
+                            animation: google.maps.Animation.BOUNCE,
+                            label: message.team,
+                            title:  '' + message.text
+                        });
+
+                    });
+
+                    markers.messagesSos.forEach(function (message) {
+                        // console.log({lat: +message.n, lng: +message.e});
+
+                        message.sosGgl = new google.maps.Marker({
+                            position: {lat: +message.n, lng: +message.e},
+                            map: map,
+                            animation: google.maps.Animation.BOUNCE,
+                            label: message.team + ' SOS',
+                            title:'' + message.text
+
+                        });
+                    });
+
+
                 },
                 statusCode: {
                     200: function () {
@@ -44,48 +86,10 @@ var initMap = function () {
                     }
                 }
             });
-        });
+        // });
 
-        markers.kpsObj = {};
 
-        markers.kps.forEach(function (kp) {
-            // console.log(kp);
-            kp.ggl = new google.maps.Marker({
-                position: {lat: kp.n, lng: kp.e},
-                map: map,
-                label: kp.kp + '',
-                title: kp.kp + ' ' + kp.text
-            });
-            markers.kpsObj[kp.kp] = kp;
-            // console.log( markers);
-
-        });
-
-        markers.messagesKp.forEach(function (message) {
-            // console.log({lat: markers.kps[marker.kp].n, lng: markers.kps[marker.kp].e});
-            message.ggl = new google.maps.Marker({
-                position: {lat: markers.kpsObj[message.kp].n, lng: markers.kpsObj[message.kp].e},
-                map: map,
-                animation: google.maps.Animation.BOUNCE,
-                label: message.team,
-                title:  '' + message.text
-            });
-
-        });
-
-        markers.messagesSos.forEach(function (message) {
-            // console.log({lat: +message.n, lng: +message.e});
-
-            message.sosGgl = new google.maps.Marker({
-                position: {lat: +message.n, lng: +message.e},
-                map: map,
-                animation: google.maps.Animation.BOUNCE,
-                label: message.team + ' SOS',
-                title:'' + message.text
-
-            });
-        });
-    });
+    // });
 
 
 };
