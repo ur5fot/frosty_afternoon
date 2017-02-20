@@ -1,4 +1,4 @@
-$(co.wrap(function *() {
+$(function () {
     var logout = $('#logout');
     logout.click(function (e) {
         e.preventDefault();
@@ -19,4 +19,4 @@ $(co.wrap(function *() {
         popup.toggleClass('show')
 
     })
-}));
+});
