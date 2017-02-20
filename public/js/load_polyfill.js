@@ -15,7 +15,7 @@ yepnope({
     nope: 'js/vendor/prefixfree.viewport-units.js'
 });
 yepnope({
-    test:Modernizr.promises ,
+    test:Modernizr.promises || Modernizr.generators,
     nope: 'https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js'
 });
 

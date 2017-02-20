@@ -16,7 +16,8 @@ $(function () {
 
     menu.click(function () {
 
-        popup.toggleClass('show')
 
+        popup.toggleClass('show');
+        return false;
     })
 });

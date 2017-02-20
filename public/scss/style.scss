@@ -68,10 +68,12 @@ h2 {
   //padding-right: 1rem;
   display: block;
   color: #ffffff;
-  float: right;
+  //float: right;
 }
 .menus{
   position: relative;
+  float: right;
+
   .popup{
     display: none;
     position: absolute;
