@@ -1,7 +1,7 @@
 {
   "port": 3000,
   "socketIo":{
-    "origins":"127.0.0.1:3000"
+    "origins":["127.0.0.1:*", "localhost:*", "landingpageedit.herokuapp.com:*"]
   },
   "mongoose": {
     "uri": "mongodb://ur5fotdima:19452070mA@ds155509.mlab.com:55509/chat1",
