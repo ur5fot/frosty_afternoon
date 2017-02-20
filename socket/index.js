@@ -40,8 +40,10 @@ module.exports = function (server) {
 
     var io = require('socket.io').listen(server);
     // var team;
-    io.set(config.get('socketIo'));
 
+    io.set(config.get('socketIo'));
+    io.set('transports', ['xhr-polling']);
+    io.set('polling duration', 10);
     io.use(function (socket, next) {
         co(function *() {
 
