@@ -1,6 +1,6 @@
 
 
-$(co.wrap(function *() {
+$(function () {
     var socket = io.connect();
     var sendPanelForm = $('#send-panel-form');
     var inputN = sendPanelForm.find('[name=n]');
@@ -9,64 +9,64 @@ $(co.wrap(function *() {
 
     var messagesWrap = $('#messages-wrap');
     scrollTop('#messages-wrap');
-
-    var messageTmpl = yield new Promise((resolve, reject) => $.get('/partials/message.hbs', function (html) {
-        resolve(Handlebars.compile(html))
-    }));
-
-    sendPanelForm.submit(function (evn) {
-        evn.preventDefault();
-        // sendMessage();
-        var form = $(this);
+    var messageTmpl = '';
+    $.get('/partials/message.hbs', function (html) {
+         messageTmpl = Handlebars.compile(html);
+        sendPanelForm.submit(function (evn) {
+            evn.preventDefault();
+            // sendMessage();
+            var form = $(this);
 
 
-        var n = inputN.val();
-        var e = inputE.val();
+            var n = inputN.val();
+            var e = inputE.val();
 
-        var input = form.find('[name=message]');
-        var inputKp = form.find('[name=kp]');
-        var text = input.val();
-        var kp = inputKp.val();
+            var input = form.find('[name=message]');
+            var inputKp = form.find('[name=kp]');
+            var text = input.val();
+            var kp = inputKp.val();
 
-        var message = {};
+            var message = {};
 
-        input.val('');
-        inputKp.val('');
-        inputN.val('');
-        inputE.val('');
+            input.val('');
+            inputKp.val('');
+            inputN.val('');
+            inputE.val('');
 
-        if (kp) {
-            message.kp = kp;
-        }
+            if (kp) {
+                message.kp = kp;
+            }
 
-        if (text) {
-            message.text = text;
-        }
+            if (text) {
+                message.text = text;
+            }
 
-        if (e && n) {
-            message.n = n;
-            message.e = e;
-        }
+            if (e && n) {
+                message.n = n;
+                message.e = e;
+            }
 
-        if (kp || text || e && n) {
-            socket.emit('message', message);
-        }
+            if (kp || text || e && n) {
+                socket.emit('message', message);
+            }
 
-        return false
+            return false
+        });
+
+        sos.click(function (e) {
+
+            e.preventDefault();
+
+           navigator.geolocation.getCurrentPosition(function (position) {
+               inputN.val(position.coords.latitude);
+               inputE.val(position.coords.longitude);
+            });
+        });
+
+
+
+
     });
-
-    sos.click(co.wrap(function *(e) {
-
-        e.preventDefault();
-
-        var position = yield  new Promise(resolve => navigator.geolocation.getCurrentPosition(function (position) {
-            resolve(position)
-        }));
-
-        inputN.val(position.coords.latitude);
-        inputE.val(position.coords.longitude);
-
-    }));
 
     socket
         .on('message', function (messageObj) {
@@ -115,5 +115,5 @@ $(co.wrap(function *() {
         scrollTop('#messages-wrap')
     }
 
-}));
+});
 

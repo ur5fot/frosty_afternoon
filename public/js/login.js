@@ -1,5 +1,5 @@
 
-$(co.wrap(function *() {
+$(function () {
 
     $('#login').submit(function () {
         var form = $(this);
@@ -52,4 +52,4 @@ $(co.wrap(function *() {
         return false;
     });
     
-}));
+});

@@ -1,5 +1,5 @@
 
-$(co.wrap(function *() {
+$(function () {
 
     $('#formKp').submit(function () {
         var form = $(this);
@@ -53,5 +53,5 @@ $(co.wrap(function *() {
 
     });
     
-}));
+});
 
