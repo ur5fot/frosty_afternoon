@@ -8,7 +8,7 @@ var errorhandler = require('errorhandler');
 var HttpError = require('./error').HttpError;
 var session = require('express-session');
 var config = require('./config');
-// var sessionStore = require('./libs/sessionStore');
+var sessionStore = require('./libs/sessionStore');
 var app = express();
 
 // view engine setup
@@ -47,20 +47,20 @@ hbs.registerHelper('block', function(name) {
     return val;
 });
 
-/*app.use(session({
+app.use(session({
     secret: config.get('session:secret'), // ABCDE242342342314123421.SHA256
     resave: false,
     saveUninitialized: true,
     key: config.get('session:key'),
     cookie: config.get('session:cookie'),
     store: sessionStore
-}));*/
+}));
 
 app.use(require('./middleware/sendHttpError'));
 
-// app.use(require('./middleware/loadUser'));
+app.use(require('./middleware/loadUser'));
 
-// require('./routes')(app);
+require('./routes')(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

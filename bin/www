@@ -13,7 +13,8 @@ var config = require('../config');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(config.get('port'));
+// var port = normalizePort(config.get('port'));
+var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
@@ -90,5 +91,5 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
-/*const io = require('../socket')(server);
-app.set('io', io);*/
+const io = require('../socket')(server);
+app.set('io', io);
