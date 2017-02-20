@@ -4,7 +4,7 @@ $(co.wrap(function *() {
         e.preventDefault();
         // alert('fff');
         $.post('/logout', function () {
-            location.href = location.href;
+            location.href = '/';
         });
 
         return false

@@ -10,8 +10,9 @@ exports.post = function (req, res, next) {
             // io.sockets.emit("session:reload", sid);
             io.sockets._events.sessreload(sid);
         }
-        res.redirect('/');
+
         if (err) return next(err);
+        res.redirect('/');
     });
 
 
