@@ -3,7 +3,7 @@ yepnope({
     nope:'js/vendor/calc-polyfill.js'
 });
 yepnope({
-    test:Modernizr.flexboxlegacy,
+    test:Modernizr.flexboxlegacy || Modernizr.flexbox || Modernizr.flexboxtweener ,
     nope:'js/vendor/flexie.min.js'
 });
 yepnope({
@@ -15,7 +15,7 @@ yepnope({
     nope: 'js/vendor/prefixfree.viewport-units.js'
 });
 yepnope({
-    test:Modernizr.promises || Modernizr.promises,
+    test:Modernizr.promises ,
     nope: 'https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js'
 });
 

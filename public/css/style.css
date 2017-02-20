@@ -121,6 +121,7 @@ h2 a {
   font-size: 1.4rem;
   display: block;
   color: #ffffff;
+  float: right;
 }
 
 .menus {
