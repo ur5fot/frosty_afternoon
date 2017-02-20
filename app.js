@@ -56,11 +56,11 @@ app.use(session({
     store: sessionStore
 }));
 
-app.use(require('./middleware/sendHttpError'));
+// app.use(require('./middleware/sendHttpError'));
 
-app.use(require('./middleware/loadUser'));
+// app.use(require('./middleware/loadUser'));
 
-require('./routes')(app);
+// require('./routes')(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
