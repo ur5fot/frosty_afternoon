@@ -2,7 +2,7 @@ var socket = io.connect();
 var map;
 var position = {};
 
-var initMap = co.wrap(function *() {
+var initMap = co.wrap(function* () {
     var myLatLng = {lat: 46.482526, lng: 30.723309};
     map = new google.maps.Map(document.getElementById('map'), {
         center: myLatLng,
