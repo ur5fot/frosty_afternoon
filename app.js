@@ -8,7 +8,7 @@ var errorhandler = require('errorhandler');
 var HttpError = require('./error').HttpError;
 var session = require('express-session');
 var config = require('./config');
-var sessionStore = require('./libs/sessionStore');
+// var sessionStore = require('./libs/sessionStore');
 var app = express();
 
 // view engine setup
@@ -56,7 +56,7 @@ hbs.registerHelper('block', function(name) {
     store: sessionStore
 }));*/
 
-// app.use(require('./middleware/sendHttpError'));
+app.use(require('./middleware/sendHttpError'));
 
 // app.use(require('./middleware/loadUser'));
 
