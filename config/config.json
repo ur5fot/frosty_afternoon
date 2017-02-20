@@ -4,7 +4,7 @@
     "origins":"localhost:*"
   },
   "mongoose": {
-    "uri": "mongodb://ur5fot:19452070mA@ds155509.mlab.com:55509/chat1",
+    "uri": "mongodb://ur5fotdima:19452070mA@ds155509.mlab.com:55509/chat1",
     "options": {
       "server": {
         "socketOptions": {
