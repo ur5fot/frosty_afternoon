@@ -1,10 +1,10 @@
 {
-  "port": 8888,
+  "port": 3000,
   "socketIo":{
     "origins":["127.0.0.1:*", "localhost:*", "landingpageedit.herokuapp.com:*"]
   },
   "mongoose": {
-    "uri": "mongodb://ur5fotdima:19452070mA@ds155509.mlab.com:55509/chat1",
+    "uri": "mongodb://localhost/chat",
     "options": {
       "server": {
         "socketOptions": {
@@ -23,17 +23,14 @@
     }
   },
   "chat": {
-    "countMessage": 300
+    "countMessage": 500
   },
   "map": {
     "kpLabel": "кп",
     "teamLabel": "К"
   },
   "site": {
-    "nameAdmin": "admin",
-    "reCAPTCHA":{
-      "siteKey": "6Lch1hUUAAAAAHTaGoQjH-Bl07Wr43sBVdmaIMuh",
-      "secretKey": "6Lch1hUUAAAAANLj-6aVbW7Pa4KIvMoN0mmYW3O0"
-    }
+    "nameAdmin": "admin"
+
   }
 }

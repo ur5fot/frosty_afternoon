@@ -1,4 +1,6 @@
 var reCAPTCHA = require('recaptcha2');
-var config = require('../config');
 
-module.exports  = new reCAPTCHA(config.get('site:reCAPTCHA'));
+module.exports  = new reCAPTCHA( {
+    'siteKey': process.env.SITE_KEY,
+    'secretKey': process.env.SECRET_KEY
+} );
